@@ -1,5 +1,6 @@
 var fs = require('fs');
 var http = require('http');
+var path = require('path');
 var url = require('url');
 
 var getdate = function(){
@@ -7,8 +8,14 @@ var getdate = function(){
 };
 
 var files = [];
-fs.readdir('.', function(err, f){
-	if(!err) files = f;
+var staticdirs = ['3rd', 'static'];
+staticdirs.forEach(function(staticdir){
+	var staticdirlocal = './' + staticdir + '/';
+	fs.readdir(staticdirlocal, function(err, f){
+		if(!err) files = files.concat( f.map(function(file){
+			return staticdir + '/' + file;
+		}) );
+	});
 });
 
 var listen = function(port, handlers) {
