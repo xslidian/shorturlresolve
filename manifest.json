@@ -1,0 +1,26 @@
+{
+	"name": "Short URL Resolver",
+	"short_name": "shorturlresolve",
+	"description": "Resolve short URLs.",
+	"icons": {
+	},
+	"manifest_version": 2,
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+	"background": {
+		"scripts": [
+		]
+	},
+	"browser_action": {
+		"default_title": "Short URL Resolver",
+		"default_popup": "index.html"
+	},
+	"permissions": [
+		"clipboardRead",
+		"clipboardWrite",
+		"storage",
+		"webRequest",
+		"webRequestBlocking",
+		"*://*/*"
+	],
+	"version": "0.0.1"
+}
